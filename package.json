@@ -5,6 +5,7 @@
   "author": "devpavan04",
   "homepage": "https://devpavan04.github.io/cryptoboys-nft-marketplace",
   "dependencies": {
+    "@ethersproject/bignumber": "^5.4.2",
     "@openzeppelin/contracts": "^3.4.1",
     "babel-polyfill": "6.26.0",
     "babel-preset-env": "1.7.0",

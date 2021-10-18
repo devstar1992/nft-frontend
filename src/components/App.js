@@ -11,7 +11,7 @@ import ContractNotDeployed from "./ContractNotDeployed/ContractNotDeployed";
 import ConnectToMetamask from "./ConnectMetamask/ConnectToMetamask";
 import Loading from "./Loading/Loading";
 import Navbar from "./Navbar/Navbar";
-
+import { BigNumber} from "@ethersproject/bignumber";
 
 const ipfsClient = require("ipfs-http-client");
 const ipfs = ipfsClient({
