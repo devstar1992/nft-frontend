@@ -11,7 +11,6 @@ import ContractNotDeployed from "./ContractNotDeployed/ContractNotDeployed";
 import ConnectToMetamask from "./ConnectMetamask/ConnectToMetamask";
 import Loading from "./Loading/Loading";
 import Navbar from "./Navbar/Navbar";
-import { BigNumber} from "@ethersproject/bignumber";
 
 const ipfsClient = require("ipfs-http-client");
 const ipfs = ipfsClient({
@@ -34,9 +33,6 @@ class App extends Component {
       contractDetected: false,
       // totalTokensMinted: 0,
       // totalTokensOwnedByAccount: 0,
-      nameIsUsed: false,
-      colorIsUsed: false,
-      colorsUsed: [],
       lastMintTime: null,
     };
   }
@@ -121,10 +117,10 @@ class App extends Component {
           .call();
 
         this.setState({ freenetCount });
-        for (var i = 1; i <= freenetCount.toNumber(); i++) {
+        for (var i = 0; i < freenetCount.toNumber(); i++) {
 
           const freenet = await freenetContract.methods
-            .tokenURI(freenetCount.toNumber())
+            .tokenURI(i)
             .call();
           console.log(freenet);
           this.setState({
@@ -133,16 +129,7 @@ class App extends Component {
         }
 
 
-        // let totalTokensMinted = await freenetContract.methods
-        //   .getNumberOfTokensMinted()
-        //   .call();
-        // totalTokensMinted = totalTokensMinted.toNumber();
-        // this.setState({ totalTokensMinted });
-        // let totalTokensOwnedByAccount = await freenetContract.methods
-        //   .getTotalNumberOfTokensOwnedByAnAddress(this.state.accountAddress)
-        //   .call();
-        // totalTokensOwnedByAccount = totalTokensOwnedByAccount.toNumber();
-        // this.setState({ totalTokensOwnedByAccount });
+
         this.setState({ loading: false });
       } else {
         this.setState({ contractDetected: false });
@@ -233,9 +220,6 @@ class App extends Component {
                 render={() => (
                   <FormAndPreview
                     mintMyNFT={this.mintMyNFT}
-                    nameIsUsed={this.state.nameIsUsed}
-                    colorIsUsed={this.state.colorIsUsed}
-                    colorsUsed={this.state.colorsUsed}
                     setMintBtnTimer={this.setMintBtnTimer}
                   />
                 )}
