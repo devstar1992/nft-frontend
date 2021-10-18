@@ -191,9 +191,9 @@ class App extends Component {
       //     this.setState({ loading: false });
       //     window.location.reload();
       //   });
-      this.setState({ loading: false });
+      // this.setState({ loading: false });
     } else {
-      this.setState({ loading: false });
+      // this.setState({ loading: false });
 
     }
   };
