@@ -124,7 +124,7 @@ class App extends Component {
         for (var i = 1; i <= freenetCount.toNumber(); i++) {
 
           const freenet = await freenetContract.methods
-            .tokenURI(freenetCount)
+            .tokenURI(freenetCount.toNumber())
             .call();
           console.log(freenet);
           this.setState({
