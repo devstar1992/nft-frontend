@@ -30,10 +30,10 @@ const AllFreenet = ({
         </div>
       </div>
       <div className="d-flex flex-wrap mb-2">
-        {freenet.map((cryptoboy) => {
+        {freenet.map((cryptoboy, i) => {
           return (
             <div
-              key={cryptoboy.kyc}
+              key={i}
               className="w-50 p-4 mt-1 border"
             >
              Full name : {cryptoboy.fullname}
