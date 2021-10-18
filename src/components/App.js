@@ -120,10 +120,11 @@ class App extends Component {
           .totalSupply()
           .call();
         console.log(freenetCount.toNumber());
+        console.log(BigNumber.from(this.state.freenetCount))
         this.setState({ freenetCount:freenetCount.toNumber() });
-        for (var i = 1; i <= this.state.freenetCount; i++) {
+        for (var i = 1; i <= freenetCount.toNumber(); i++) {
           const freenet = await freenetContract.methods
-            .tokenURI(BigNumber.from(this.state.freenetCount))
+            .tokenURI(freenetCount)
             .call();
           this.setState({
             freenet: [...this.state.freenet, freenet],
