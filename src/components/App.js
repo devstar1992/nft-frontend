@@ -173,27 +173,23 @@ class App extends Component {
 
   mintMyNFT = async (name, email, file) => {
     this.setState({ loading: true });
-    console.log(name);
-    console.log(email);
-    console.log(file);
     if (name && email && file) {   
-      console.log(name);
       let cid = await ipfs.add(file);
+      const tokenObject = {
+        fullname: name,
+        email: email,
+        image: cid.path  
+      };
+      cid = await ipfs.add(JSON.stringify(tokenObject));
       console.log(cid);
-      // const tokenObject = {
-      //   fullname: name,
-      //   email: email,
-      //   image: cid.path  
-      // };
-      // cid = await ipfs.add(JSON.stringify(tokenObject));
-      // this.state.freenetContract.methods
-      //   .mintToken(this.state.accountAddress, cid.path)
-      //   .send({ from: this.state.accountAddress })
-      //   .on("confirmation", () => {
-      //     localStorage.setItem(this.state.accountAddress, new Date().getTime());
-      //     this.setState({ loading: false });
-      //     window.location.reload();
-      //   });
+      this.state.freenetContract.methods
+        .mintToken(this.state.accountAddress, cid.path)
+        .send({ from: this.state.accountAddress })
+        .on("confirmation", () => {
+          localStorage.setItem(this.state.accountAddress, new Date().getTime());
+          this.setState({ loading: false });
+          window.location.reload();
+        });
       this.setState({ loading: false });
     } else {
       this.setState({ loading: false });
