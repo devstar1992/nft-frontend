@@ -18,7 +18,7 @@ const AllFreenet = ({
       }
     }
   }, [freenet]);
-
+  console.log(freenet);
   return (
     <div>
       <div className="card mt-1">
