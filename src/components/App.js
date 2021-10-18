@@ -51,7 +51,7 @@ class App extends Component {
         lastMintTime: localStorage.getItem(this.state.accountAddress),
       });
       this.state.lastMintTime === undefined || this.state.lastMintTime === null
-        ? (mintBtn.innerHTML = "Mint My Crypto Boy")
+        ? (mintBtn.innerHTML = "Mint")
         : this.checkIfCanMint(parseInt(this.state.lastMintTime));
     }
   };
@@ -65,7 +65,7 @@ class App extends Component {
       const diff = countDownTime - now;
       if (diff < 0) {
         mintBtn.removeAttribute("disabled");
-        mintBtn.innerHTML = "Mint My Crypto Boy";
+        mintBtn.innerHTML = "Mint";
         localStorage.removeItem(this.state.accountAddress);
         clearInterval(interval);
       } else {
