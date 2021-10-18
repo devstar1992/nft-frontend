@@ -1,9 +1,7 @@
 {
-  "name": "cryptoboys",
+  "name": "test",
   "version": "0.1.0",
-  "description": "Crypto Boys NFT Marketplace",
-  "author": "devpavan04",
-  "homepage": "https://devpavan04.github.io/cryptoboys-nft-marketplace",
+  "description": "TEST",
   "dependencies": {
     "@ethersproject/bignumber": "^5.4.2",
     "@openzeppelin/contracts": "^3.4.1",
