@@ -11,7 +11,6 @@ import ContractNotDeployed from "./ContractNotDeployed/ContractNotDeployed";
 import ConnectToMetamask from "./ConnectMetamask/ConnectToMetamask";
 import Loading from "./Loading/Loading";
 import Navbar from "./Navbar/Navbar";
-
 const ipfsClient = require("ipfs-http-client");
 const ipfs = ipfsClient({
   host: "ipfs.infura.io",
@@ -115,17 +114,23 @@ class App extends Component {
         const freenetCount = await freenetContract.methods
           .totalSupply()
           .call();
-
         this.setState({ freenetCount });
         for (var i = 0; i < freenetCount.toNumber(); i++) {
 
           const freenet = await freenetContract.methods
             .tokenURI(i)
             .call();
-          console.log(freenet);
-          this.setState({
-            freenet: [...this.state.freenet, freenet],
-          });
+
+          fetch(freenet)
+            .then(response => response.json())
+            .then(data => {
+              this.setState({
+                freenet: [...this.state.freenet, data],
+              });
+            }
+            );
+
+
         }
 
 
@@ -165,12 +170,12 @@ class App extends Component {
 
   mintMyNFT = async (name, email, file) => {
     this.setState({ loading: true });
-    if (name && email && file) {   
+    if (name && email && file) {
       let cid = await ipfs.add(file);
       const tokenObject = {
         fullname: name,
         email: email,
-        image: cid.path  
+        image: cid.path
       };
       cid = await ipfs.add(JSON.stringify(tokenObject));
       console.log(cid);
