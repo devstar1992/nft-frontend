@@ -119,16 +119,16 @@ class App extends Component {
         const freenetCount = await freenetContract.methods
           .totalSupply()
           .call();
-        console.log(freenetCount);
-        // this.setState({ freenetCount });
-        // for (var i = 1; i <= 1; i++) {
-        //   const freenet = await freenetContract.methods
-        //     .tokenURI(i)
-        //     .call();
-        //   this.setState({
-        //     freenet: [...this.state.freenet, freenet],
-        //   });
-        // }
+        console.log(freenetCount.toNumber());
+        this.setState({ freenetCount:freenetCount.toNumber() });
+        for (var i = 1; i <= this.state.freenetCount; i++) {
+          const freenet = await freenetContract.methods
+            .tokenURI(new BigNumber(this.state.freenetCount))
+            .call();
+          this.setState({
+            freenet: [...this.state.freenet, freenet],
+          });
+        }
 
 
         // let totalTokensMinted = await freenetContract.methods
