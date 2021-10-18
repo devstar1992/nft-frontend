@@ -116,9 +116,10 @@ class App extends Component {
         );
         this.setState({ freenetContract });
         this.setState({ contractDetected: true });
-        // const freenetCount = await freenetContract.methods
-        //   .totalSupply()
-        //   .call();
+        const freenetCount = await freenetContract.methods
+          .totalSupply()
+          .call();
+        console.log(freenetCount);
         // this.setState({ freenetCount });
         // for (var i = 1; i <= 1; i++) {
         //   const freenet = await freenetContract.methods
@@ -191,7 +192,6 @@ class App extends Component {
           console.log('mint');
           localStorage.setItem(this.state.accountAddress, new Date().getTime());
           this.setState({ loading: false });
-          window.location.reload();
         });
       this.setState({ loading: false });
     } else {
