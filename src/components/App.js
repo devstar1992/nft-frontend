@@ -209,7 +209,7 @@ class App extends Component {
         ) : !this.state.contractDetected ? (
           <ContractNotDeployed />
         ) : this.state.loading ? (
-          <Loading />
+          <></>
         ) : (
           <>
             <HashRouter basename="/">
