@@ -173,9 +173,8 @@ class App extends Component {
 
   mintMyNFT = async (name, email, file) => {
     this.setState({ loading: true });
-    
+    console.log(name);
     if (name && email && file) {   
-      this.setState({ loading: true });
       let cid = await ipfs.add(file);
       console.log(cid);
       // const tokenObject = {
