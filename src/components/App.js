@@ -122,9 +122,11 @@ class App extends Component {
 
         this.setState({ freenetCount });
         for (var i = 1; i <= freenetCount.toNumber(); i++) {
+
           const freenet = await freenetContract.methods
             .tokenURI(freenetCount)
             .call();
+          console.log(freenet);
           this.setState({
             freenet: [...this.state.freenet, freenet],
           });
