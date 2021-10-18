@@ -5,16 +5,13 @@ import Loading from "../Loading/Loading";
 const AllFreenet = ({
   freenet,
   accountAddress,
-  totalTokensMinted,
-  changeTokenPrice,
-  toggleForSale,
-  buyCryptoBoy,
+  freenetCount 
 }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (freenet.length !== 0) {
-      if (freenet[0].metaData !== undefined) {
+      if (freenet[0].kyx !== undefined) {
         setLoading(loading);
       } else {
         setLoading(false);
@@ -27,8 +24,8 @@ const AllFreenet = ({
       <div className="card mt-1">
         <div className="card-body align-items-center d-flex justify-content-center">
           <h5>
-            Total No. of CryptoBoy's Minted On The Platform :{" "}
-            {totalTokensMinted}
+            Total  :{" "}
+            {freenetCount}
           </h5>
         </div>
       </div>
@@ -36,22 +33,13 @@ const AllFreenet = ({
         {freenet.map((cryptoboy) => {
           return (
             <div
-              key={cryptoboy.tokenId.toNumber()}
+              key={cryptoboy.kyc}
               className="w-50 p-4 mt-1 border"
             >
-              {!loading ? (
-                <>
-                </>
-              ) : (
-                <Loading />
-              )}
-              <CryptoBoyNFTDetails
-                cryptoboy={cryptoboy}
-                accountAddress={accountAddress}
-                changeTokenPrice={changeTokenPrice}
-                toggleForSale={toggleForSale}
-                buyCryptoBoy={buyCryptoBoy}
-              />
+             Full name : {cryptoboy.fullname}
+              Email: {cryptoboy.email}
+              KYC: <img src={cryptoboy.kyc} style={{width:'50px', height:'50px'}} />
+             
             </div>
           );
         })}

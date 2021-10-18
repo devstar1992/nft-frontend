@@ -230,10 +230,7 @@ class App extends Component {
                   <AllFreenet
                     accountAddress={this.state.accountAddress}
                     freenet={this.state.freenet}
-                    totalTokensMinted={this.state.totalTokensMinted}
-                    changeTokenPrice={this.changeTokenPrice}
-                    toggleForSale={this.toggleForSale}
-                    buyCryptoBoy={this.buyCryptoBoy}
+                    freenetCount={this.state.freenetCount}
                   />
                 )}
               />
